@@ -5,6 +5,8 @@
 	<classpathentry kind="lib" path="lib/jgoodies-forms-1.8.0-sources.jar"/>
 	<classpathentry kind="lib" path="lib/jgoodies-forms-1.8.0.jar"/>
 	<classpathentry kind="lib" path="lib/miglayout15-swing.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="lib/fastjson-1.2.56.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ChatRoomServer"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
