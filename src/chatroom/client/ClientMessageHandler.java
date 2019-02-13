@@ -22,6 +22,7 @@ import chatroom.message.RoomListMessage;
 import chatroom.message.RoomStautsMessage;
 import chatroom.message.TalkMessage;
 import chatroom.model.Room;
+import chatroom.model.Talk;
 import chatroom.model.User;
 
 public class ClientMessageHandler {
@@ -149,9 +150,12 @@ public class ClientMessageHandler {
 
 		case MessageType.MESSAGE_TYPE_ROOMSTAUTS:
 			RoomStautsMessage roomStautsMsg= JSON.toJavaObject(jo, RoomStautsMessage.class);
-			//roomStautsMsg.getUser();
+			List<User> users=roomStautsMsg.getUsers();
+			List<Talk> talks=roomStautsMsg.getTalks();
 			chatRoomWin = new ChatRoomWin(this);
 	    	setChatRoomWin(chatRoomWin);
+	    	chatRoomWin.loadUsers(users);
+	     	chatRoomWin.loadTalks(talks);
 	    	chatRoomWin.setVisible(true);
 			
 			break;

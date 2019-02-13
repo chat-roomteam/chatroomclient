@@ -10,12 +10,16 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.JScrollBar;
+import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import chatroom.message.ExitRoomMessage;
 import chatroom.message.RoomStautsMessage;
+import chatroom.model.Room;
+import chatroom.model.Talk;
+import chatroom.model.User;
 
 import javax.swing.JTextArea;
 import javax.swing.JButton;
@@ -26,6 +30,9 @@ import java.awt.TextArea;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
+import java.util.List;
+
+import javax.swing.JList;
 
 public class ChatRoomWin {
 
@@ -37,7 +44,40 @@ public class ChatRoomWin {
 		this.clientMessageHandler=clientMessageHandler;
 	}
 
+	public void loadUsers(List<User> users) {
+		JPanel panel = new JPanel();
+		panel.setBounds(446, 0, 130, 430);
+		frmXx.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		
+		JList<List> list = new JList<List>();
+		list.setBounds(10, 10, 110, 410);
+		DefaultListModel<List> listModel=new DefaultListModel<List>();
+		listModel.addElement(users);
+		list.setModel(listModel);
+		panel.add(list);
+		
+	}
 	
+	public void loadTalks(List<Talk> talks) {
+		JPanel panel_1 = new JPanel();
+		JTextArea textArea = new JTextArea(); 
+		textArea.setEnabled(false);
+		textArea.setLineWrap(true);
+		JScrollPane scroll = new JScrollPane(textArea); 
+		scroll.setSize(415, 240);
+		scroll.setLocation(10, 10);
+		scroll.setVerticalScrollBarPolicy( 
+				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
+		panel_1.add(scroll);
+
+		panel_1.setBounds(10, 10, 423, 249);
+		frmXx.getContentPane().add(panel_1);
+		panel_1.setLayout(null);
+		//将信息传入文本框中
+		
+	}
 
 	private void initialize() {
 		frmXx = new JFrame();
@@ -56,39 +96,12 @@ public class ChatRoomWin {
             } 
         });
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(446, 0, 130, 430);
-		frmXx.getContentPane().add(panel);
-		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.TRAILING)
-				.addGap(0, 130, Short.MAX_VALUE)
-		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 430, Short.MAX_VALUE)
-		);
-		panel.setLayout(gl_panel);
 		
 		JButton btnNewButton = new JButton("发送");
 		btnNewButton.setFont(new Font("宋体", Font.PLAIN, 18));
 		btnNewButton.setBounds(340, 269, 93, 151);
 		frmXx.getContentPane().add(btnNewButton);
 		
-		JPanel panel_1 = new JPanel();
-		JTextArea textArea = new JTextArea(); 
-		textArea.setEnabled(false);
-		textArea.setLineWrap(true);
-		JScrollPane scroll = new JScrollPane(textArea); 
-		scroll.setSize(415, 240);
-		scroll.setLocation(10, 10);
-		scroll.setVerticalScrollBarPolicy( 
-				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
-		panel_1.add(scroll);
-
-		panel_1.setBounds(10, 10, 423, 249);
-		frmXx.getContentPane().add(panel_1);
-		panel_1.setLayout(null);
 		
 		JPanel panel_2 = new JPanel();
 		JTextArea textArea_1 = new JTextArea(); 
