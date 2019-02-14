@@ -139,7 +139,6 @@ public class ClientMessageHandler {
 			EnterRoomMessage enterRoomMsg=  JSON.toJavaObject(jo, EnterRoomMessage.class);
 			enterRoomMsg.getRoomId();
 			chatRoomListWin.setVisible(false);
-			
 			RoomStautsMessage roomStautsMessage = new RoomStautsMessage();
 			try {
 				sendMessage(roomStautsMessage);

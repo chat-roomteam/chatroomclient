@@ -63,6 +63,7 @@ public class ChatRoomListWin {
 		f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		f.setLocationRelativeTo(null);
 		f.setVisible(true);
+		
 	}
 
 
