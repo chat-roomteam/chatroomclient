@@ -132,6 +132,7 @@ public class ClientMessageHandler {
 		
 		case MessageType.MESSAGE_TYPE_EXITROOM:
 			ExitRoomMessage exitRoomMsg= JSON.toJavaObject(jo, ExitRoomMessage.class);
+			
 			chatRoomListWin.setVisible(true);
 			break;
 			
@@ -154,14 +155,14 @@ public class ClientMessageHandler {
 			chatRoomWin = new ChatRoomWin(this);
 	    	setChatRoomWin(chatRoomWin);
 	    	chatRoomWin.loadUsers(users);
-	     	chatRoomWin.loadTalks(talks);
+	     	chatRoomWin.loadHistroyTalks(talks);
 	    	chatRoomWin.setVisible(true);
 			
 			break;
 			
 		case MessageType.MESSAGE_TYPE_TALK:
 			TalkMessage talkMsg = JSON.toJavaObject(jo, TalkMessage.class);
-			
+			chatRoomWin.loadTalks(talkMsg.getTalk());
 
 		}
 		return true;
